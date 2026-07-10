@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Sekolah Pro - Platform Manajemen Sekolah Terpadu</title>
+    <meta name="description" content="Platform Manajemen Sekolah Terpadu dengan Desain Ultra-Premium & Fitur No-Code Builder. Dibangun dengan Laravel & Tailwind CSS.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9; /* Sky 500 */
+            --primary-hover: #0284c7; /* Sky 600 */
+            --secondary: #10b981; /* Emerald 500 */
+            --bg-color: #f8fafc; /* Slate 50 */
+            --text-main: #0f172a; /* Slate 900 */
+            --text-muted: #64748b; /* Slate 500 */
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0; /* Slate 200 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            line-height: 1.25;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 2.75rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 5%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-hover);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 11rem 5% 8rem;
+            text-align: center;
+            background: radial-gradient(circle at top right, #e0f2fe 0%, #f0fdf4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle, rgba(14,165,233,0.06) 0%, rgba(255,255,255,0) 60%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: var(--primary-hover);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid #bae6fd;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: -webkit-linear-gradient(45deg, #0f172a, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #475569;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary-hover);
+            border: 2px solid var(--primary-hover);
+            box-shadow: none;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-hover);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.2);
+        }
+
+        .hero-image-wrapper {
+            margin-top: 6rem;
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            max-width: 95%;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+            border: 1px solid #f1f5f9;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 8rem 5%;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #bae6fd;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #e0f2fe, #f0fdf4);
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card ul li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .feature-card ul li::before {
+            content: '✓';
+            color: white;
+            background: var(--secondary);
+            margin-right: 0.75rem;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* Gallery */
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+        
+        .gallery-btn.active, .gallery-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .gallery-container {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+        @media (max-width: 1024px) { .gallery-container { column-count: 2; } }
+        @media (max-width: 640px) { .gallery-container { column-count: 1; } }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            position: relative;
+            background: white;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.2);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item::after {
+            content: '🔍 Perbesar';
+            position: absolute;
+            top: 0.5rem; left: 0.5rem; right: 0.5rem; bottom: 0.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+            backdrop-filter: blur(3px);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #ef4444;
+        }
+
+        /* Tech Stack */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .tech-tag {
+            background: white;
+            color: var(--text-main);
+            padding: 0.85rem 1.75rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            text-align: left;
+            border: 1px solid var(--border-color);
+            position: relative;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.15);
+            transform: scale(1.05);
+            background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-card.enterprise {
+            background: #0f172a;
+            color: white;
+            border-color: #1e293b;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 6px 24px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.3);
+            white-space: nowrap;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .popular .pricing-title { color: var(--primary-hover); }
+        .enterprise .pricing-title { color: #94a3b8; }
+
+        .price {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 1rem 0 0.5rem;
+            letter-spacing: -0.05em;
+        }
+        
+        .enterprise .price { color: white; }
+        
+        .price-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+        .enterprise .price-desc { color: #94a3b8; }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .enterprise .pricing-features li { color: #cbd5e1; }
+
+        .pricing-features li span.check {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        .pricing-features li span.cross {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .btn-full {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .pricing-card.popular { transform: none; }
+            .pricing-card.popular:hover { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-icon">C</div>
+            CMS Sekolah Pro
+        </a>
+        <div class="nav-links">
+            <a href="#features">Modul Utama</a>
+            <a href="#gallery">Antarmuka</a>
+            <a href="#tech">Teknologi</a>
+            <a href="#pricing">Paket Harga</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">🚀 Platform Digitalisasi Pendidikan Terpadu</span>
+            <h1>Sistem Manajemen Sekolah Ultra-Premium</h1>
+            <p>Bukan sekadar website sekolah biasa. Paduan desain front-end eksklusif dan dasbor manajemen canggih dengan teknologi No-Code Builder.</p>
+            <div>
+                <a href="#pricing" class="btn">Lihat Penawaran</a>
+                <a href="#features" class="btn btn-outline">Eksplorasi Fitur</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="Img/frontend/screencapture-127-0-0-1-8000-2026-06-16-17_40_08.png" alt="Preview Front-End Website Sekolah" class="hero-image" loading="lazy">
+        </div>
+    </header>
+
+    <section id="features">
+        <h2>Modul & Fitur Unggulan</h2>
+        <p style="text-align: center; font-size: 1.15rem; max-width: 700px; margin: 0 auto;">Dibangun untuk mengakomodasi segala kebutuhan profil publik hingga sistem manajemen konten (CMS) admin yang fleksibel.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Custom Pods Engine (No-Code)</h3>
+                <ul>
+                    <li>Buat tipe konten baru (Buku Tamu, FAQ) tanpa coding.</li>
+                    <li>Custom Fields dengan berbagai format input.</li>
+                    <li>Sistem <strong>Shortcode</strong> untuk memuat data otomatis di postingan manapun.</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📰</div>
+                <h3>Sistem Publikasi Berita</h3>
+                <ul>
+                    <li>Editor konten WYSIWYG yang canggih & responsif.</li>
+                    <li>Dukungan integrasi shortcode dinamis.</li>
+                    <li>SEO Ready (Meta Description & URL Otomatis).</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3>Sarana & Ekstrakurikuler</h3>
+                <ul>
+                    <li>Pamerkan infrastruktur dan prasarana belajar.</li>
+                    <li>Katalog ekstrakurikuler & program unggulan.</li>
+                    <li>Tampilan halaman terdedikasi dengan cover banner.</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🏫</div>
+                <h3>Manajemen SDM & Staf</h3>
+                <ul>
+                    <li>Pendataan Kepala Sekolah, Guru & Tendik lengkap.</li>
+                    <li>Kartu staf publik eksklusif dengan efek hover.</li>
+                    <li>Informasi jabatan dan spesialisasi mata pelajaran.</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Agenda & Pengumuman</h3>
+                <ul>
+                    <li>Broadcast pengumuman urgent (Alerts).</li>
+                    <li>Kalender akademik dan agenda kegiatan terstruktur.</li>
+                    <li>Penyampaian informasi cepat ke wali murid & siswa.</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Penerimaan Siswa (PPDB) & Unduhan</h3>
+                <ul>
+                    <li>Buka/Tutup pendaftaran PPDB secara instan.</li>
+                    <li>Link pendaftaran dinamis kontrol penuh Admin.</li>
+                    <li>Bank Unduhan untuk formulir dan brosur resmi.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background: white;">
+        <h2>Galeri Antarmuka Memukau</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.15rem;">Klik gambar untuk memperbesar tangkapan layar (Resolusi Penuh).</p>
+        
+        <div class="gallery-nav">
+            <button class="gallery-btn active" onclick="filterGallery('all', event)">Semua Tampilan</button>
+            <button class="gallery-btn" onclick="filterGallery('frontend', event)">Frontend (Publik)</button>
+            <button class="gallery-btn" onclick="filterGallery('backend', event)">Backend (Admin)</button>
+        </div>
+
+        <div class="gallery-container">
+            <!-- Frontend Images -->
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-2026-06-16-17_40_08.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-2026-06-16-17_40_08.png" alt="Beranda Utama" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/iPhone-13-PRO-127.0.0.1.png')">
+                <img src="Img/frontend/iPhone-13-PRO-127.0.0.1.png" alt="Beranda Mobile" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-profil-2026-06-16-17_40_30.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-profil-2026-06-16-17_40_30.png" alt="Profil Sekolah" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-berita-2026-06-16-17_48_54.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-berita-2026-06-16-17_48_54.png" alt="Portal Berita" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-berita-berira-b-2026-06-16-17_49_08.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-berita-berira-b-2026-06-16-17_49_08.png" alt="Detail Berita" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-pengumuman-2026-06-16-17_49_25.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-pengumuman-2026-06-16-17_49_25.png" alt="Pengumuman" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-kepala-sekolah-2026-06-16-17_45_20.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-kepala-sekolah-2026-06-16-17_45_20.png" alt="Profil Kepala Sekolah" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-guru-2026-06-16-17_43_13.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-guru-2026-06-16-17_43_13.png" alt="Direktori Guru" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-tenaga-didik-2026-06-16-17_45_37.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-tenaga-didik-2026-06-16-17_45_37.png" alt="Tenaga Kependidikan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-staf-2-2026-06-16-17_47_10.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-staf-2-2026-06-16-17_47_10.png" alt="Detail Staf" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-fasilitas-2026-06-16-17_48_23.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-fasilitas-2026-06-16-17_48_23.png" alt="Halaman Fasilitas" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-fasilitas-ruang-kelas-2026-06-16-17_48_34.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-fasilitas-ruang-kelas-2026-06-16-17_48_34.png" alt="Detail Fasilitas" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-program-unggulan-2026-06-16-17_49_38.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-program-unggulan-2026-06-16-17_49_38.png" alt="Program Unggulan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-program-unggulan-tata-boga-2026-06-16-17_49_44.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-program-unggulan-tata-boga-2026-06-16-17_49_44.png" alt="Detail Program Unggulan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-unduhan-2026-06-16-17_48_45.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-unduhan-2026-06-16-17_48_45.png" alt="Bank Unduhan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-galeri-2026-06-16-17_47_29.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-galeri-2026-06-16-17_47_29.png" alt="Galeri Utama" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-galeri-111-2026-06-16-17_47_38.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-galeri-111-2026-06-16-17_47_38.png" alt="Detail Galeri" loading="lazy">
+            </div>
+            <div class="gallery-item filter-frontend" onclick="openLightbox('Img/frontend/screencapture-127-0-0-1-8000-ppdb-2026-06-16-17_50_00.png')">
+                <img src="Img/frontend/screencapture-127-0-0-1-8000-ppdb-2026-06-16-17_50_00.png" alt="PPDB" loading="lazy">
+            </div>
+
+            <!-- Backend Images -->
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-dashboard-2026-06-16-17_51_15.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-dashboard-2026-06-16-17_51_15.png" alt="Dasbor Admin" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-settings-2026-06-16-17_55_34.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-settings-2026-06-16-17_55_34.png" alt="Pengaturan Web" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-settings-appearance-2026-06-16-17_55_58.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-settings-appearance-2026-06-16-17_55_58.png" alt="Pengaturan Tampilan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-settings-contact-2026-06-16-17_55_43.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-settings-contact-2026-06-16-17_55_43.png" alt="Pengaturan Kontak" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-settings-seo-2026-06-16-17_56_11.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-settings-seo-2026-06-16-17_56_11.png" alt="Pengaturan SEO" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-settings-ppdb-2026-06-16-17_56_25.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-settings-ppdb-2026-06-16-17_56_25.png" alt="Pengaturan PPDB" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-posts-2026-06-16-17_51_29.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-posts-2026-06-16-17_51_29.png" alt="Manajemen Berita" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-posts-22-edit-2026-06-16-17_51_38.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-posts-22-edit-2026-06-16-17_51_38.png" alt="Editor Berita" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-2026-06-16-17_51_50.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-2026-06-16-17_51_50.png" alt="Manajemen Pengumuman" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-1-edit-2026-06-16-17_52_05.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-1-edit-2026-06-16-17_52_05.png" alt="Edit Pengumuman" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-events-2026-06-16-17_52_13.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-events-2026-06-16-17_52_13.png" alt="Manajemen Agenda" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-events-1-edit-2026-06-16-17_52_26.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-events-1-edit-2026-06-16-17_52_26.png" alt="Edit Agenda" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-downloads-2026-06-16-17_55_05.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-downloads-2026-06-16-17_55_05.png" alt="Manajer Unduhan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-2026-06-16-17_53_39.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-2026-06-16-17_53_39.png" alt="Manajemen Staf & Guru" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-1-edit-2026-06-16-17_53_52.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-1-edit-2026-06-16-17_53_52.png" alt="Edit Staf" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-2026-06-16-17_54_00.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-2026-06-16-17_54_00.png" alt="Manajemen Fasilitas" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-1-edit-2026-06-16-17_54_15.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-1-edit-2026-06-16-17_54_15.png" alt="Edit Fasilitas" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-2026-06-16-17_54_23.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-2026-06-16-17_54_23.png" alt="Program Unggulan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-1-edit-2026-06-16-17_54_38.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-1-edit-2026-06-16-17_54_38.png" alt="Edit Program Unggulan" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-media-2026-06-16-17_52_59.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-media-2026-06-16-17_52_59.png" alt="Media Center Terpadu" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2026-06-16-17_52_34.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2026-06-16-17_52_34.png" alt="Galeri Dokumentasi" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2-edit-2026-06-16-17_52_48.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2-edit-2026-06-16-17_52_48.png" alt="Edit Galeri" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-sliders-2026-06-16-17_53_13.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-sliders-2026-06-16-17_53_13.png" alt="Menu Slider" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-menus-1-edit-2026-06-16-17_53_28.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-menus-1-edit-2026-06-16-17_53_28.png" alt="Menu Builder" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-pods-2026-06-16-17_56_39.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-pods-2026-06-16-17_56_39.png" alt="Custom Pods" loading="lazy">
+            </div>
+            <div class="gallery-item filter-backend" onclick="openLightbox('Img/Backend/screencapture-127-0-0-1-8000-admin-users-2026-06-16-17_55_20.png')">
+                <img src="Img/Backend/screencapture-127-0-0-1-8000-admin-users-2026-06-16-17_55_20.png" alt="Audit Log & Users" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <h2>Dibangun dengan Tech Stack Enterprise</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.15rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            CMS Sekolah Pro memanfaatkan kombinasi teknologi paling stabil dan modern untuk kecepatan maksimal serta antarmuka reaktif.
+        </p>
+        <div class="tech-tags">
+            <span class="tech-tag"><span style="color: #ef4444; font-size: 1.2rem;">L</span> Laravel 11</span>
+            <span class="tech-tag"><span style="color: #0ea5e9; font-size: 1.2rem;">~</span> Tailwind CSS</span>
+            <span class="tech-tag"><span style="color: #8bc34a; font-size: 1.2rem;">A</span> Alpine.js</span>
+            <span class="tech-tag"><span style="color: #4f46e5; font-size: 1.2rem;">⚡</span> Livewire</span>
+        </div>
+    </section>
+
+    <section id="pricing" style="background: white;">
+        <h2>Investasi Pengadaan Sistem</h2>
+        <p style="text-align: center; font-size: 1.15rem; max-width: 700px; margin: 0 auto;">Pilih skema lisensi yang paling relevan dengan tingkat kebutuhan infrastruktur digital sekolah Anda.</p>
+        
+        <div class="pricing-grid">
+            <!-- Basic -->
+            <div class="pricing-card">
+                <h3 class="pricing-title">Paket Standard (Dasar)</h3>
+                <div class="price">Rp 3.0 Juta</div>
+                <p class="price-desc">Lisensi Kode Sumber Sekali Bayar</p>
+                <p class="price-desc">Termasuk Biaya Hosting Pertama Kali, Biaya Langganan Seterusnya diluar paket</p>
+                
+                <ul class="pricing-features">
+                    <li><span class="check">✔️</span> Akses Penuh Seluruh Fitur Standar</li>
+                    <li><span class="check">✔️</span> Akses Source Code Penuh</li>
+                    <li><span class="check">✔️</span> Customisasi Halaman & Tata Letak Dasar</li>
+                    <li><span class="check">✔️</span> Bantuan Instalasi (Deploy)</li>
+                    <li><span class="cross">❌</span> Tanpa Bantuan Maintenance</li>
+                    <li><span class="cross">❌</span> Tidak Termasuk Halaman Custom Baru</li>
+                </ul>
+                <a href="mailto:ahmadnoval.muhyiddin@gmail.com" class="btn btn-outline btn-full" style="margin-left: 0;">Pilih Standard</a>
+            </div>
+            
+            <!-- Pro (Popular) -->
+            <div class="pricing-card popular">
+                <div class="pricing-badge">Rekomendasi Utama</div>
+                <h3 class="pricing-title">Paket Profesional (Pro)</h3>
+                <div class="price">Rp 3.5 Juta</div>
+                <p class="price-desc">Lisensi Kode Sumber Sekali Bayar</p>
+                <p class="price-desc">Termasuk Biaya Hosting Pertama Kali, Biaya Langganan Seterusnya diluar paket</p>
+                
+                <ul class="pricing-features">
+                    <li><span class="check">✔️</span> Semua Fitur Paket Standard</li>
+                    <li><span class="check">✔️</span> Akses Source Code Penuh</li>
+                    <li><span class="check">✔️</span> Customisasi Halaman & Tata Letak Dasar</li>
+                    <li><span class="check">✔️</span> Bantuan Instalasi (Deploy)</li>
+                    <li><span class="check">✔️</span> <strong>Request Tambah Halaman Baru (Statis)</strong></li>
+                    <li><span class="cross">❌</span> Maintenance 1 Bulan</li>
+                </ul>
+                <a href="mailto:ahmadnoval.muhyiddin@gmail.com" class="btn btn-full">Pilih Profesional</a>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="pricing-card enterprise">
+                <h3 class="pricing-title">Skala Yayasan (Enterprise)</h3>
+                <div class="price">Mulai Rp 4 Juta</div>
+                <p class="price-desc">Lisensi Penuh + Maintenance</p>
+                <p class="price-desc">Termasuk Biaya Hosting Pertama Kali, Biaya Langganan Seterusnya diluar paket</p>
+                
+                <ul class="pricing-features">
+                    <li><span class="check">✔️</span> Semua Keuntungan Paket Pro</li>
+                    <li><span class="check">✔️</span> Pengembangan Fitur Kustom Baru (Maks 3)</li>
+                    <li><span class="check">✔️</span> Bantuan Instalasi Skala Besar</li>
+                    <li><span class="check">✔️</span> Jaminan Pelatihan Staff Operasional</li>
+                    <li><span class="check">✔️</span> <strong>Maintenance Spesial Hingga 8 Bulan</strong></li>
+                </ul>
+                <a href="mailto:ahmadnoval.muhyiddin@gmail.com" class="btn btn-full" style="background: white; color: #0f172a; border: none;">Hubungi untuk Enterprise</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="footer-logo">
+                <div class="logo-icon" style="width: 30px; height: 30px; font-size: 1rem;">C</div>
+                CMS Sekolah Pro
+            </a>
+            <div style="display: flex; gap: 2rem;">
+                <a href="mailto:ahmadnoval.muhyiddin@gmail.com" style="color: #cbd5e1; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    ✉️ ahmadnoval.muhyiddin@gmail.com
+                </a>
+            </div>
+        </div>
+        <p style="text-align: center;">&copy; 2026 CMS Sekolah Pro. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" title="Tutup">&times;</span>
+        <img id="lightbox-img" src="" alt="Preview">
+    </div>
+
+    <script>
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                const lightboxImg = document.getElementById('lightbox-img');
+                if(!lightbox.classList.contains('active')) {
+                    lightboxImg.src = "";
+                }
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Gallery Filter Logic
+        function filterGallery(category, event) {
+            // Update active button
+            document.querySelectorAll('.gallery-btn').forEach(btn => btn.classList.remove('active'));
+            if(event) {
+                event.target.classList.add('active');
+            }
+
+            // Filter items
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.classList.remove('hidden');
+                } else if (category === 'frontend') {
+                    if (item.classList.contains('filter-frontend')) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                } else if (category === 'backend') {
+                    if (item.classList.contains('filter-backend')) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
