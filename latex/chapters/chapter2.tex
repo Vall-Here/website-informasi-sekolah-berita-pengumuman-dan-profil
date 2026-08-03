@@ -1,0 +1,223 @@
+% =====================================================================
+%  BAB 2: MANAJEMEN KONTEN UTAMA
+%  (Berita / Posts, Pengumuman / Announcements, Agenda / Events)
+% =====================================================================
+
+\chapter{Manajemen Konten Utama}
+
+Modul ini mencakup tiga jenis konten informasi publik paling penting
+dalam website sekolah: \textbf{Berita}, \textbf{Pengumuman}, dan \textbf{Agenda}.
+Ketiganya dapat dikelola oleh pengguna berperan \textbf{Admin} atau \textbf{Editor}
+(khusus Berita).
+
+% -------------------------------------------------------------------
+\section{Modul Berita (\textit{Posts})}
+% -------------------------------------------------------------------
+
+Modul Berita adalah sistem penerbitan artikel berbasis \textit{WYSIWYG editor}
+(menggunakan \textbf{Quill Editor}). Setiap artikel mendukung fitur kategori,
+\textit{tag}, thumbnail, SEO, penjadwalan tayang otomatis, dan penandaan sebagai
+artikel unggulan.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-posts-2026-06-16-17_51_29.png}
+  \caption{Daftar Berita di Panel Admin}
+  \label{fig:posts-index}
+\end{figure}
+
+\subsection{Skenario: Menerbitkan Berita Prestasi Sekolah}
+
+Misalkan SMA Nusantara baru saja meraih Juara 1 Olimpiade Sains Nasional.
+Guru Pembimbing (berperan \textit{Editor}) menulis draf, kemudian Admin
+menambahkan thumbnail dan memublikasikannya.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-posts-22-edit-2026-06-16-17_51_38.png}
+  \caption{Form Editor Berita --- Tampilan Lengkap}
+  \label{fig:posts-edit}
+\end{figure}
+
+\subsection{Panduan: Menulis Berita Baru}
+
+\begin{enumerate}
+  \item Klik menu \textbf{Berita} di \textit{sidebar} kiri, lalu klik tombol \textbf{Tulis Berita Baru}.
+  \item Pada panel kiri atas, isi kolom \textbf{Judul} (contoh: ``Juara 1 OSN Bidang Matematika'').
+        Kolom \textbf{Slug} akan terisi otomatis berdasarkan judul (dapat diubah manual jika diperlukan).
+  \item Tuliskan isi lengkap artikel pada area \textbf{Konten} menggunakan Quill Editor.
+        Editor mendukung pemformatan teks tebal, miring, daftar, tautan, dan penyisipan gambar.
+  \item Isi kolom \textbf{Excerpt} --- ringkasan singkat artikel (1-3 kalimat) yang
+        akan tampil di halaman daftar berita.
+  \item Pada panel kanan, atur \textbf{Status} melalui \textit{dropdown}:
+        \begin{itemize}
+          \item \textit{Draf} --- tersimpan, tidak terlihat publik
+          \item \textit{Review} --- menunggu persetujuan Admin
+          \item \textit{Terjadwal} --- tayang otomatis pada waktu yang ditentukan
+          \item \textit{Terbit} --- langsung terlihat publik
+          \item \textit{Arsip} --- disembunyikan dari publik tanpa dihapus
+        \end{itemize}
+  \item Jika memilih \textit{Terjadwal}, isi \textbf{Jadwal Tayang} (format: Tanggal dan Jam).
+  \item Centang \textbf{Tandai sebagai unggulan} jika artikel ini harus tampil di
+        \textit{carousel} utama halaman depan.
+  \item Pilih \textbf{Kategori} dari \textit{dropdown} yang tersedia.
+  \item Tambahkan \textbf{Tag}: ketikkan nama \textit{tag} pada kolom input lalu klik tombol \textbf{Tambah},
+        atau klik salah satu \textit{tag} yang sudah ada untuk memilihnya. Tag yang dipilih akan muncul
+        sebagai \textit{badge} biru yang bisa dihapus dengan klik tanda \textbf{×}.
+  \item Pilih gambar \textbf{Thumbnail}: klik tombol \textbf{Pilih Media} untuk membuka
+        Pustaka Media. Disarankan menggunakan rasio \textbf{16:9} untuk hasil terbaik.
+        Klik \textbf{Hapus} untuk membatalkan pilihan thumbnail.
+  \item (Opsional) Pilih \textbf{OG Image} (Open Graph Image) untuk pratinjau saat artikel
+        dibagikan di media sosial. Disarankan rasio \textbf{1.91:1}.
+  \item Isi panel \textbf{SEO} di bagian bawah: \textit{Meta Title}, \textit{Meta Description},
+        \textit{Canonical URL}. Aktifkan \textit{No Index} jika tidak ingin artikel ini diindeks
+        oleh mesin pencari.
+  \item Klik salah satu tombol aksi di \textit{action bar} yang menempel di bagian bawah layar:
+        \begin{itemize}
+          \item \textbf{Simpan Draf} (hitam) --- menyimpan sebagai draf
+          \item \textbf{Simpan Perubahan} (biru) --- menyimpan dengan status yang dipilih
+          \item \textbf{Publikasikan} (biru border) --- langsung mengubah status menjadi \textit{Published}
+          \item \textbf{Preview} --- membuka pratinjau artikel di tab baru
+        \end{itemize}
+\end{enumerate}
+
+\begin{notebox}[Izinkan Komentar]
+  Centang opsi \textbf{Izinkan komentar} jika Anda ingin mengaktifkan fitur
+  komentar pembaca pada artikel ini. Fitur ini bersifat per-artikel.
+\end{notebox}
+
+\subsection{Mengelola Kategori \& Tag}
+
+\textbf{Kategori} dan \textbf{Tag} dikelola melalui menu terpisah di \textit{sidebar}:
+
+\begin{enumerate}
+  \item Klik menu \textbf{Kategori} untuk menambah, mengedit, atau menghapus kategori.
+        Setiap kategori memiliki nama dan \textit{slug} unik.
+  \item Klik menu \textbf{Tag} untuk mengelola tag. Tag bisa juga ditambahkan
+        langsung dari dalam form penulisan berita.
+\end{enumerate}
+
+\subsection{Penanganan Masalah: Berita}
+
+\begin{itemize}
+  \item \textbf{Artikel tidak muncul di halaman publik}: Periksa apakah
+        \textbf{Status} sudah diatur ke \textit{Terbit}. Status \textit{Draf},
+        \textit{Review}, dan \textit{Arsip} tidak terlihat oleh publik.
+  \item \textbf{Gambar Thumbnail tidak berubah}: Coba \textit{hard refresh} halaman
+        (Ctrl+Shift+R). Perubahan gambar memerlukan pembersihan \textit{cache} browser.
+  \item \textbf{Tombol Publikasikan tidak berfungsi}: Pastikan kolom \textbf{Judul}
+        dan \textbf{Konten} sudah diisi. Kedua kolom ini bersifat wajib (\textit{required}).
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Modul Pengumuman (\textit{Announcements})}
+% -------------------------------------------------------------------
+
+Modul Pengumuman digunakan untuk menerbitkan pemberitahuan resmi sekolah,
+seperti jadwal libur, informasi ujian, atau edaran penting. Pengumuman mendukung
+fitur \textit{Pin} (sematkan) dan lampiran dokumen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-2026-06-16-17_51_50.png}
+  \caption{Daftar Pengumuman di Panel Admin}
+  \label{fig:announcements-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-announcements-1-edit-2026-06-16-17_52_05.png}
+  \caption{Form Edit Pengumuman}
+  \label{fig:announcements-edit}
+\end{figure}
+
+\subsection{Skenario: Menerbitkan Pengumuman Libur Nasional}
+
+Kepala Sekolah meminta Admin TU untuk segera menerbitkan pengumuman bahwa sekolah
+libur pada tanggal 17 Agustus. Admin membuat pengumuman baru, menyematkannya
+(\textit{Pin}) agar muncul paling atas, dan melampirkan surat edaran PDF.
+
+\subsection{Panduan: Membuat Pengumuman}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Pengumuman} lalu klik tombol \textbf{Buat Pengumuman}.
+  \item Isi kolom \textbf{Judul} (contoh: ``Libur HUT RI ke-80'').
+  \item Pilih \textbf{Kategori} dari \textit{dropdown} (misal: ``Akademik'', ``Umum'').
+        Pilih kosong jika tidak berkategori.
+  \item Tentukan rentang aktif pengumuman:
+        \begin{itemize}
+          \item \textbf{Mulai} --- tanggal pengumuman mulai aktif (format: YYYY-MM-DD)
+          \item \textbf{Selesai} --- tanggal pengumuman berakhir
+        \end{itemize}
+  \item Atur \textbf{Status}:
+        \begin{itemize}
+          \item \textit{Draft} --- belum terlihat publik
+          \item \textit{Published} --- langsung terlihat publik
+        \end{itemize}
+  \item Centang \textbf{Pin Pengumuman} jika pengumuman ini harus muncul paling
+        atas dalam daftar dan diberikan sorotan khusus.
+  \item Tulis isi pengumuman di editor \textbf{Konten} (Quill Editor, tinggi 280px).
+  \item (Opsional) Unggah berkas di kolom \textbf{Lampiran (PDF/DOC)}.
+        Jika pengumuman sudah pernah memiliki lampiran dan Anda ingin menggantinya,
+        centang kotak \textbf{Hapus lampiran} sebelum mengunggah file baru.
+  \item Klik tombol hitam \textbf{Simpan Pengumuman}.
+\end{enumerate}
+
+\subsection{Penanganan Masalah: Pengumuman}
+
+\begin{itemize}
+  \item \textbf{Pengumuman hilang dari website sebelum tanggal selesai}: Pastikan
+        \textbf{Status} masih \textit{Published}. Jika Anda atau orang lain tidak sengaja
+        mengubah status ke \textit{Draft}, pengumuman akan tersembunyi.
+  \item \textbf{File lampiran gagal diunggah}: Pastikan file berformat PDF atau DOC/DOCX
+        dan ukurannya tidak melebihi batas unggah server (biasanya 2 MB untuk \textit{shared hosting}).
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Modul Agenda (\textit{Events})}
+% -------------------------------------------------------------------
+
+Modul Agenda mencatat jadwal kegiatan sekolah (seminar, lomba, ujian, perlombaan, dll.)
+beserta lokasi, durasi, dan gambar acara.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-events-2026-06-16-17_52_13.png}
+  \caption{Daftar Agenda di Panel Admin}
+  \label{fig:events-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-events-1-edit-2026-06-16-17_52_26.png}
+  \caption{Form Edit Agenda --- Detail Waktu dan Lokasi}
+  \label{fig:events-edit}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Agenda}
+
+\begin{enumerate}
+  \item Masuk ke menu \textbf{Agenda} lalu klik tombol tambah.
+  \item Isi \textbf{Judul} agenda (contoh: ``Ujian Tengah Semester Ganjil 2025'').
+  \item Isi \textbf{Lokasi} tempat pelaksanaan (contoh: ``Aula SMA Nusantara'').
+  \item Tentukan waktu mulai pada kolom \textbf{Mulai} (format: tanggal dan jam, contoh: 2025-10-14T08:00).
+  \item Tentukan waktu selesai pada kolom \textbf{Selesai} (format sama).
+  \item Tulis deskripsi lengkap agenda pada editor \textbf{Deskripsi}.
+  \item Atur \textbf{Status}: \textit{Draft} atau \textit{Published}.
+  \item Centang \textbf{Agenda Unggulan} jika kegiatan ini berskala besar dan
+        ingin ditampilkan secara mencolok di halaman agenda publik.
+  \item Unggah gambar/poster acara pada kolom \textbf{Gambar Agenda} melalui komponen
+        \textit{image-upload}.
+  \item Klik tombol hitam \textbf{Simpan}.
+\end{enumerate}
+
+\subsection{Penanganan Masalah: Agenda}
+
+\begin{itemize}
+  \item \textbf{Agenda tidak muncul di halaman depan}: Halaman depan biasanya menampilkan
+        agenda yang memiliki tanggal \textit{Mulai} di masa mendatang. Agenda yang sudah
+        lewat (\textit{expired}) tidak akan ditampilkan di \textit{upcoming events}.
+  \item \textbf{Format waktu salah}: Kolom \textit{Mulai} dan \textit{Selesai} menggunakan
+        format \texttt{YYYY-MM-DDTHH:mm}. Pastikan browser Anda menampilkan
+        \textit{datetime-local picker} dengan benar.
+\end{itemize}

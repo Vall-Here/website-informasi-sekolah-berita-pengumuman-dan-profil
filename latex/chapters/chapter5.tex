@@ -1,0 +1,281 @@
+% =====================================================================
+%  BAB 5: KONFIGURASI SISTEM & KUSTOMISASI LANJUTAN
+%  (Settings, Users, Pods)
+% =====================================================================
+
+\chapter{Konfigurasi Sistem \& Kustomisasi Lanjutan}
+
+Modul ini mencakup pengaturan global website, manajemen akun pengguna,
+dan fitur \textit{Pods} (tipe konten kustom). Akses modul ini
+\textbf{dibatasi hanya untuk Super Admin dan Admin}.
+
+% -------------------------------------------------------------------
+\section{Pengaturan Umum (\textit{General Settings})}
+% -------------------------------------------------------------------
+
+Pengaturan Umum menyimpan seluruh identitas sekolah yang ditampilkan di
+berbagai halaman publik website.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-settings-2026-06-16-17_55_34.png}
+  \caption{Tab Pengaturan Umum --- Identitas Sekolah}
+  \label{fig:settings-general}
+\end{figure}
+
+\subsection{Panduan: Mengisi Identitas Sekolah}
+
+\begin{enumerate}
+  \item Klik menu \textbf{Pengaturan} (\textit{Settings}) di \textit{sidebar}.
+        Anda langsung berada di tab \textbf{Umum}.
+  \item Isi bagian \textbf{Identitas Sekolah}:
+        \begin{itemize}
+          \item \textbf{Nama Sekolah} --- nama resmi lengkap (wajib diisi)
+          \item \textbf{Tagline} --- slogan atau motto sekolah
+          \item \textbf{Deskripsi} --- paragraf perkenalan singkat
+          \item \textbf{Alamat} --- alamat lengkap sekolah
+          \item \textbf{Telepon} dan \textbf{Email}
+          \item \textbf{Tahun Berdiri} dan \textbf{NPSN}
+          \item \textbf{Akreditasi} dan \textbf{Nilai Akreditasi}
+          \item \textbf{Status Sekolah} (Negeri/Swasta)
+          \item \textbf{Luas Tanah (m2)}, \textbf{Luas Bangunan (m2)},
+                \textbf{Waktu Belajar}, \textbf{Ruang Kelas}, \textbf{Program Studi}
+        \end{itemize}
+  \item Isi bagian \textbf{Logo \& Struktur}:
+        \begin{itemize}
+          \item \textbf{Logo Sekolah} --- digunakan juga di header, tab browser,
+                dan favicon. Gunakan PNG berlatar transparan.
+          \item \textbf{Gambar Struktur Organisasi} --- ditampilkan di halaman
+                \texttt{/struktur-organisasi}.
+        \end{itemize}
+  \item Isi bagian \textbf{Profil Sekolah}:
+        \begin{itemize}
+          \item \textbf{Ringkasan Profil}, \textbf{Sejarah}, \textbf{Visi},
+                \textbf{Misi} (baris baru per poin misi)
+          \item \textbf{Video Profil (Link YouTube)} --- tempel URL penuh video,
+                contoh: \texttt{https://www.youtube.com/watch?v=xxxxxxxx}.
+                Video akan ditampilkan di beranda.
+        \end{itemize}
+  \item Isi bagian \textbf{Struktur \& Layanan}:
+        \begin{itemize}
+          \item \textbf{Deskripsi Struktur Organisasi}
+          \item \textbf{Ringkasan Layanan} dan \textbf{Daftar Layanan}
+                (baris baru per poin layanan)
+        \end{itemize}
+  \item Isi bagian \textbf{Statistik Beranda} --- angka ini ditampilkan di
+        halaman depan sebagai \textit{stat counter}:
+        \begin{itemize}
+          \item \textbf{Total Guru \& Staf}
+          \item \textbf{Siswa Aktif}
+          \item \textbf{Program Unggulan}
+          \item \textbf{Total Prestasi}
+        \end{itemize}
+  \item Isi bagian \textbf{Keamanan \& Akses}:
+        \begin{itemize}
+          \item \textbf{URL Login Admin Kustom} --- ganti \texttt{login} dengan
+                kata rahasia Anda (misal: \texttt{portal-guru}).
+                URL Login akan menjadi \texttt{/portal-guru}.
+        \end{itemize}
+  \item Klik tombol \textbf{Simpan Perubahan}.
+\end{enumerate}
+
+\begin{warnbox}[KRITIS: URL Login Kustom]
+  Jika Anda mengubah \textbf{URL Login Admin Kustom} dan lupa kata rahasianya,
+  Anda tidak akan bisa mengakses halaman login. Satu-satunya cara pemulihan adalah
+  melalui \textit{database manager} (phpMyAdmin/Adminer) dengan mengubah nilai
+  \texttt{admin\_login\_url} di tabel \texttt{settings} secara langsung.
+  \textbf{Catat dan simpan URL rahasia ini di tempat yang aman!}
+\end{warnbox}
+
+% -------------------------------------------------------------------
+\section{Pengaturan Kontak (\textit{Contact Settings})}
+% -------------------------------------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-settings-contact-2026-06-16-17_55_43.png}
+  \caption{Tab Pengaturan Kontak --- WhatsApp dan Sosial Media}
+  \label{fig:settings-contact}
+\end{figure}
+
+Navigasikan ke tab \textbf{Kontak} untuk mengisi:
+\begin{itemize}
+  \item \textbf{Maps Embed URL} --- URL \textit{iframe} Google Maps (untuk halaman \texttt{/kontak})
+  \item \textbf{WhatsApp Number} --- nomor WhatsApp lengkap dengan kode negara (contoh: \texttt{628123456789})
+  \item \textbf{Jam Operasional}
+  \item Tautan media sosial: \textbf{Facebook URL}, \textbf{Instagram URL},
+        \textbf{YouTube URL}, \textbf{Twitter/X URL}
+\end{itemize}
+
+Klik \textbf{Simpan Perubahan} setelah selesai.
+
+% -------------------------------------------------------------------
+\section{Pengaturan Tampilan (\textit{Appearance Settings})}
+% -------------------------------------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-settings-appearance-2026-06-16-17_55_58.png}
+  \caption{Tab Pengaturan Tampilan --- Tema dan Tipografi}
+  \label{fig:settings-appearance}
+\end{figure}
+
+Navigasikan ke tab \textbf{Tampilan} untuk mengatur:
+\begin{itemize}
+  \item \textbf{Warna Utama} dan \textbf{Warna Sekunder} --- kode warna HEX
+        (contoh: \texttt{\#0ea5e9})
+  \item \textbf{Jumlah Post per Halaman} --- berapa artikel yang ditampilkan
+        per halaman di \texttt{/berita} (rentang: 1--60)
+  \item \textbf{Font Utama (Teks Standar)} --- pilih dari daftar Google Fonts:
+        \textit{Inter, Roboto, Poppins, Montserrat, Open Sans, Lato, Nunito,
+        Outfit, Plus Jakarta Sans, Public Sans}
+  \item \textbf{Font Judul (Aksen/Display)} --- pilih dari: \textit{Space Grotesk,
+        Oswald, Bebas Neue, Raleway, DM Sans, Syne, Clash Display, Righteous, Cinzel}
+  \item \textbf{Font Formal (Serif)} --- pilih dari: \textit{Playfair Display, Lora,
+        Merriweather, PT Serif, Noto Serif, Crimson Text, EB Garamond}
+\end{itemize}
+
+Klik \textbf{Simpan Perubahan} setelah selesai.
+
+% -------------------------------------------------------------------
+\section{Pengaturan SEO}
+% -------------------------------------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-settings-seo-2026-06-16-17_56_11.png}
+  \caption{Tab Pengaturan SEO Global}
+  \label{fig:settings-seo}
+\end{figure}
+
+Navigasikan ke tab \textbf{SEO} untuk mengisi:
+\begin{itemize}
+  \item \textbf{Deskripsi Meta Default} --- deskripsi yang dipakai jika halaman
+        tidak memiliki \textit{meta description} sendiri (maks. 320 karakter)
+  \item \textbf{Google Analytics ID} --- kode pelacakan GA4
+        (contoh: \texttt{G-XXXXXXXXXX})
+  \item \textbf{Google Site Verification} --- kode verifikasi kepemilikan situs
+        di Google Search Console
+  \item \textbf{Robots.txt} --- isi aturan perayapan mesin pencari secara manual
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Pengaturan PPDB}
+% -------------------------------------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-settings-ppdb-2026-06-16-17_56_25.png}
+  \caption{Tab Pengaturan PPDB --- Pendaftaran Peserta Didik Baru}
+  \label{fig:settings-ppdb}
+\end{figure}
+
+Navigasikan ke tab \textbf{PPDB} untuk mengatur penerimaan siswa baru:
+\begin{enumerate}
+  \item Centang \textbf{Aktifkan Halaman PPDB} untuk memunculkan banner dan tombol
+        ``Daftar PPDB'' di header website publik dan mengaktifkan halaman \texttt{/ppdb}.
+  \item Isi \textbf{Link Pendaftaran (Opsional)} --- URL formulir pendaftaran eksternal
+        (Google Form, website PPDB pusat, dll.).
+  \item Isi \textbf{Tanggal Mulai (Opsional)} dan \textbf{Tanggal Berakhir (Opsional)}
+        untuk menampilkan countdown atau informasi rentang waktu pendaftaran.
+  \item Isi \textbf{Pengumuman / Informasi Tambahan PPDB} --- teks bebas untuk
+        menampilkan syarat, narahubung, atau info gelombang pendaftaran.
+  \item Klik tombol \textbf{Simpan Pengaturan}.
+\end{enumerate}
+
+% -------------------------------------------------------------------
+\section{Manajemen Pengguna (\textit{Users})}
+% -------------------------------------------------------------------
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-users-2026-06-16-17_55_20.png}
+  \caption{Daftar Pengguna Admin}
+  \label{fig:users-index}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Pengguna Baru}
+
+\begin{enumerate}
+  \item Klik menu \textbf{Pengguna} (\textit{Users}) di \textit{sidebar}.
+  \item Klik tombol tambah.
+  \item Isi \textbf{Nama} lengkap pengguna.
+  \item Isi \textbf{Email} yang akan digunakan sebagai \textit{username} untuk login.
+  \item Isi \textbf{Password} --- kata sandi sementara. Pengguna disarankan
+        mengganti kata sandinya setelah login pertama kali.
+        Saat mengedit pengguna yang sudah ada, \textbf{kosongkan kolom ini}
+        jika tidak ingin mengubah kata sandi.
+  \item Pilih \textbf{Role} dari \textit{dropdown}:
+        \begin{itemize}
+          \item \textit{Super Admin} --- akses penuh
+          \item \textit{Admin} --- akses konten dan media
+          \item \textit{Editor} --- akses tulis berita saja
+        \end{itemize}
+  \item Pastikan kotak \textbf{Aktif} dicentang agar pengguna dapat login.
+  \item Klik tombol \textbf{Simpan}.
+\end{enumerate}
+
+\begin{notebox}[Menonaktifkan Pengguna]
+  Untuk mencabut akses pengguna tanpa menghapus akunnya, \textbf{hapus centang}
+  dari kotak \textbf{Aktif} dan simpan. Pengguna yang tidak aktif tidak dapat login
+  ke panel admin.
+\end{notebox}
+
+% -------------------------------------------------------------------
+\section{Tipe Konten Kustom (\textit{Pods})}
+% -------------------------------------------------------------------
+
+Fitur \textit{Pods} adalah mekanisme canggih yang memungkinkan Super Admin
+membangun modul konten baru secara dinamis tanpa membutuhkan pemrograman.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-pods-2026-06-16-17_56_39.png}
+  \caption{Halaman Manajemen Pods (Tipe Konten Kustom)}
+  \label{fig:pods-index}
+\end{figure}
+
+\subsection{Skenario: Membuat Modul Testimoni Alumni}
+
+Sekolah ingin menampilkan \textit{gallery} testimoni dari alumni terbaik di halaman depan.
+Tidak ada modul bawaan untuk ini, maka Super Admin membuat \textit{Pod} baru.
+
+\subsection{Panduan: Membuat Pod Baru}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Pods} dan klik tambah.
+  \item Isi \textbf{Nama Pod} (contoh: ``Testimoni Alumni'') dan deskripsinya.
+  \item Simpan Pod. Sistem akan membuat struktur basis data secara otomatis.
+  \item Klik \textbf{Kelola Field} pada Pod yang baru dibuat untuk mendefinisikan
+        kolom-kolom datanya:
+        \begin{itemize}
+          \item Tambahkan field \textbf{Nama Lengkap} (tipe: Text)
+          \item Tambahkan field \textbf{Angkatan} (tipe: Number)
+          \item Tambahkan field \textbf{Kesan \& Pesan} (tipe: Textarea)
+          \item Tambahkan field \textbf{Foto} (tipe: Image)
+        \end{itemize}
+  \item Setelah field tersimpan, buka menu \textbf{Pods $\rightarrow$ Testimoni Alumni $\rightarrow$ Entri}
+        untuk mulai mengisi data testimoni alumni.
+\end{enumerate}
+
+\subsection{Menampilkan Data Pod di Konten Berita}
+
+Data dari \textit{Pod} dapat disisipkan ke dalam konten berita menggunakan \textit{shortcode}
+khusus di editor Quill:
+
+\begin{lstlisting}
+[pod:testimoni-alumni limit=5]
+\end{lstlisting}
+
+Sistem akan me-\textit{render} 5 entri testimoni terbaru dari Pod tersebut
+secara dinamis di dalam konten artikel.
+
+\subsection{Penanganan Masalah: Pods}
+
+\begin{itemize}
+  \item \textbf{\textit{Shortcode} tidak me-\textit{render}}:  Pastikan \textit{slug}
+        Pod yang digunakan dalam \textit{shortcode} sama persis dengan \textit{slug}
+        di sistem. Cek di halaman daftar Pods.
+  \item \textbf{Data entri Pod tidak tersimpan}: Pastikan semua field yang
+        didefinisikan sebagai \textit{required} sudah terisi sebelum menyimpan.
+\end{itemize}

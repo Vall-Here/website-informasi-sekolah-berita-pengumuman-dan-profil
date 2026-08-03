@@ -1,0 +1,63 @@
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{\numberline {1}Pendahuluan \& Akses Sistem}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Matriks Peran (Role) Pengguna}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Skenario \& Alur Kerja: Login Pertama Kali}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Panduan Penggunaan: Login \& Dashboard}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Proses Login}{4}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Memahami Dashboard}{4}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Logout / Keluar dari Sistem}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Penanganan Masalah Umum (Akses \& Login)}{5}{section.1.5}%
+\contentsline {chapter}{\numberline {2}Manajemen Konten Utama}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Modul Berita (\textit {Posts})}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Skenario: Menerbitkan Berita Prestasi Sekolah}{7}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Panduan: Menulis Berita Baru}{8}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Mengelola Kategori \& Tag}{9}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Penanganan Masalah: Berita}{9}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Modul Pengumuman (\textit {Announcements})}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Skenario: Menerbitkan Pengumuman Libur Nasional}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Panduan: Membuat Pengumuman}{11}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Penanganan Masalah: Pengumuman}{11}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Modul Agenda (\textit {Events})}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Panduan: Menambahkan Agenda}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Penanganan Masalah: Agenda}{13}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Manajemen Kepegawaian \& Data Akademik}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Modul Staf \& Guru (\textit {Staffs})}{14}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Skenario: Mendaftarkan Guru Baru}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Panduan: Menambahkan Data Staf / Guru}{15}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Mengelola Jabatan Struktural (Posisi)}{16}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Penanganan Masalah: Staf \& Guru}{16}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Modul Prestasi (\textit {Achievements})}{16}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Panduan: Menambahkan Data Prestasi}{17}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Modul Ekstrakurikuler (\textit {Extracurriculars})}{17}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Panduan: Menambahkan Ekstrakurikuler}{18}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}Modul Fasilitas (\textit {Facilities})}{18}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Panduan: Menambahkan Fasilitas}{19}{subsection.3.4.1}%
+\contentsline {chapter}{\numberline {4}Manajemen Media, Galeri, Slider \& Navigasi}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Modul Pustaka Media (\textit {Media Library})}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Cara Mengunggah Gambar}{20}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Cara Menghapus Gambar}{21}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Modul Unduhan (\textit {Downloads})}{21}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Skenario: Menyediakan Brosur PPDB}{21}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Panduan: Menambahkan Berkas Unduhan}{21}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Penanganan Masalah: Unduhan}{22}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Modul Galeri (\textit {Galleries})}{22}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Panduan: Membuat Album Galeri}{23}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Modul Slider (\textit {Sliders})}{24}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Panduan: Menambahkan Slide Baru}{24}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}Modul Menu Navigasi (\textit {Menus})}{25}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Panduan: Menambahkan Item Menu}{27}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Penanganan Masalah: Menu}{27}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Konfigurasi Sistem \& Kustomisasi Lanjutan}{28}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Pengaturan Umum (\textit {General Settings})}{28}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Panduan: Mengisi Identitas Sekolah}{29}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Pengaturan Kontak (\textit {Contact Settings})}{31}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Pengaturan Tampilan (\textit {Appearance Settings})}{32}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Pengaturan SEO}{33}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Pengaturan PPDB}{33}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Manajemen Pengguna (\textit {Users})}{34}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Panduan: Menambahkan Pengguna Baru}{34}{subsection.5.6.1}%
+\contentsline {section}{\numberline {5.7}Tipe Konten Kustom (\textit {Pods})}{35}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Skenario: Membuat Modul Testimoni Alumni}{35}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Panduan: Membuat Pod Baru}{35}{subsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.7.3}Menampilkan Data Pod di Konten Berita}{36}{subsection.5.7.3}%
+\contentsline {subsection}{\numberline {5.7.4}Penanganan Masalah: Pods}{36}{subsection.5.7.4}%

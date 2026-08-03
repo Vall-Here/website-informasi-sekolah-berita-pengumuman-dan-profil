@@ -1,0 +1,191 @@
+% =====================================================================
+%  BAB 3: MANAJEMEN KEPEGAWAIAN & AKADEMIK
+%  (Staf/Guru, Prestasi, Ekstrakurikuler, Fasilitas)
+% =====================================================================
+
+\chapter{Manajemen Kepegawaian \& Data Akademik}
+
+Modul ini menyediakan fitur untuk mengelola data sumber daya manusia sekolah
+(guru, tenaga kependidikan, kepala sekolah) dan informasi akademik pendukung
+(prestasi siswa, program ekstrakurikuler, fasilitas sekolah).
+
+% -------------------------------------------------------------------
+\section{Modul Staf \& Guru (\textit{Staffs})}
+% -------------------------------------------------------------------
+
+Data Staf dan Guru akan tampil secara dinamis di halaman publik website sekolah,
+meliputi halaman \texttt{/guru}, \texttt{/tenaga-didik}, dan \texttt{/kepala-sekolah}.
+Sistem membedakan tampilan berdasarkan kolom \textbf{Tipe} yang dipilih saat pendataan.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-2026-06-16-17_53_39.png}
+  \caption{Daftar Staf \& Guru di Panel Admin}
+  \label{fig:staffs-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-staffs-1-edit-2026-06-16-17_53_52.png}
+  \caption{Form Edit Data Guru --- Termasuk Sub-Panel Kepala Sekolah}
+  \label{fig:staffs-edit}
+\end{figure}
+
+\subsection{Skenario: Mendaftarkan Guru Baru}
+
+Pak Budi, S.Pd, baru saja resmi bergabung sebagai guru Matematika.
+Admin kepegawaian perlu mendaftarkan profilnya agar muncul di halaman
+daftar guru website sekolah.
+
+\subsection{Panduan: Menambahkan Data Staf / Guru}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Staf/Guru} di \textit{sidebar}, lalu klik tombol tambah.
+  \item Pilih \textbf{Tipe} dari \textit{dropdown}:
+        \begin{itemize}
+          \item \textit{Guru} --- tampil di halaman \texttt{/guru}
+          \item \textit{Tenaga Kependidikan} --- tampil di halaman \texttt{/tenaga-didik}
+          \item \textit{Kepala Sekolah} --- tampil di halaman \texttt{/kepala-sekolah}
+                dengan tampilan profil khusus yang lebih lengkap
+        \end{itemize}
+  \item Isi \textbf{Nama Lengkap} beserta gelar akademik.
+  \item Isi \textbf{NIP / NIY} (Nomor Induk Pegawai / Yayasan).
+  \item Pilih \textbf{Jabatan Struktur (Organisasi)} dari \textit{dropdown} jika pegawai ini
+        memegang posisi struktural (misal: Wakil Kepala Sekolah Bidang Kurikulum).
+        Pilih \textit{--- Tidak ada jabatan terstruktur ---} untuk guru biasa.
+  \item Isi \textbf{Tugas / Jabatan Lainnya} secara bebas (misal: ``Wali Kelas XII IPA 1'').
+  \item Isi \textbf{Mata Pelajaran Diampu} (misal: ``Matematika Wajib'').
+  \item Isi \textbf{Pendidikan Terakhir} (misal: ``S1 Pendidikan Matematika, UNY'').
+  \item Tentukan \textbf{Urutan (Tampil di Web)}: angka terkecil akan tampil paling atas.
+        Gunakan angka 1 untuk yang paling prioritas.
+  \item Tulis \textbf{Bio Singkat} di \textit{textarea} yang tersedia.
+
+  \item Jika \textbf{Tipe} dipilih \textit{Kepala Sekolah}, isi juga sub-panel
+        \textbf{Informasi Tambahan}:
+        \begin{itemize}
+          \item \textbf{Tempat Tanggal Lahir} (contoh: ``Palembang, 6 Juli 1975'')
+          \item \textbf{Jabatan Fungsional} (contoh: ``Guru Ahli Madya (IV/b)'')
+          \item \textbf{Status / Pangkat / GOL} (contoh: ``IV/b -- Pembina Tingkat I'')
+          \item \textbf{Perangkat Daerah}
+          \item \textbf{Unit Kerja} (contoh: ``SMA Negeri 1 Kepohbaru'')
+        \end{itemize}
+
+  \item Atur \textbf{Status Aktif}: pilih \textit{Aktif} untuk guru yang masih berdinas,
+        \textit{Nonaktif} untuk yang sudah tidak aktif (data tetap tersimpan).
+  \item Unggah \textbf{Foto} pas foto guru (komponen \textit{image-upload}).
+  \item Klik tombol hitam \textbf{Simpan}.
+\end{enumerate}
+
+\begin{warnbox}[Penting: Tipe Kepala Sekolah]
+  Halaman publik \texttt{/kepala-sekolah} dirancang khusus dan hanya akan menampilkan
+  data staf yang kolom \textbf{Tipe}-nya diatur ke \textit{Kepala Sekolah}. Salah memilih
+  tipe akan menyebabkan profil tidak muncul di halaman yang tepat.
+\end{warnbox}
+
+\subsection{Mengelola Jabatan Struktural (Posisi)}
+
+Daftar jabatan yang tersedia di \textit{dropdown} \textbf{Jabatan Struktur} dikelola
+melalui menu \textbf{Posisi (Jabatan)}:
+
+\begin{enumerate}
+  \item Klik menu \textbf{Posisi} di \textit{sidebar}.
+  \item Tambahkan jabatan baru (misal: ``Wakil Kepala Sekolah Bidang Humas'').
+  \item Jabatan yang baru ditambahkan akan langsung tersedia di \textit{dropdown}
+        form staf.
+\end{enumerate}
+
+\subsection{Penanganan Masalah: Staf \& Guru}
+
+\begin{itemize}
+  \item \textbf{Urutan guru berantakan}: Pastikan setiap guru memiliki angka
+        \textbf{Urutan} yang berbeda. Angka yang sama akan menghasilkan urutan acak.
+  \item \textbf{Foto guru tidak muncul}: Pastikan proses unggah berhasil
+        (ukuran file maksimal sesuai konfigurasi server). Format yang disarankan:
+        JPG atau PNG, rasio 3:4 (potret).
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Modul Prestasi (\textit{Achievements})}
+% -------------------------------------------------------------------
+
+Modul Prestasi mendokumentasikan pencapaian siswa dalam berbagai kompetisi
+atau kegiatan akademik/non-akademik.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-achievements-2026-06-16-17_54_46.png}
+  \caption{Daftar Prestasi di Panel Admin}
+  \label{fig:achievements-index}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Data Prestasi}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Prestasi} dan klik tambah.
+  \item Isi nama judul prestasi, tingkatan (Kabupaten/Kota, Provinsi, Nasional,
+        Internasional), tahun, dan nama siswa atau tim yang berprestasi.
+  \item Unggah foto dokumentasi (piala, medali, sertifikat) sebagai gambar pendukung.
+  \item Klik \textbf{Simpan}.
+\end{enumerate}
+
+% -------------------------------------------------------------------
+\section{Modul Ekstrakurikuler (\textit{Extracurriculars})}
+% -------------------------------------------------------------------
+
+Menampilkan daftar program unggulan dan ekstrakurikuler sekolah di halaman
+\texttt{/program-unggulan}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-2026-06-16-17_54_23.png}
+  \caption{Daftar Ekstrakurikuler di Panel Admin}
+  \label{fig:extracurriculars-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-extracurriculars-1-edit-2026-06-16-17_54_38.png}
+  \caption{Form Edit Ekstrakurikuler}
+  \label{fig:extracurriculars-edit}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Ekstrakurikuler}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Program Unggulan} dan klik tambah.
+  \item Isi nama ekstrakurikuler, deskripsi kegiatan (menggunakan editor teks),
+        hari/waktu latihan, dan nama pembimbing.
+  \item Unggah foto kegiatan sebagai gambar utama.
+  \item Klik \textbf{Simpan}.
+\end{enumerate}
+
+% -------------------------------------------------------------------
+\section{Modul Fasilitas (\textit{Facilities})}
+% -------------------------------------------------------------------
+
+Mendokumentasikan fasilitas fisik sekolah yang ditampilkan di halaman
+\texttt{/fasilitas}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-2026-06-16-17_54_00.png}
+  \caption{Daftar Fasilitas di Panel Admin}
+  \label{fig:facilities-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-facilities-1-edit-2026-06-16-17_54_15.png}
+  \caption{Form Edit Fasilitas}
+  \label{fig:facilities-edit}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Fasilitas}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Fasilitas} dan klik tambah.
+  \item Isi nama fasilitas (contoh: ``Laboratorium Komputer''), kapasitas, kondisi,
+        dan deskripsi lengkap.
+  \item Unggah foto fasilitas.
+  \item Klik \textbf{Simpan}.
+\end{enumerate}

@@ -1,0 +1,150 @@
+% =====================================================================
+%  BAB 1: PENDAHULUAN & AKSES SISTEM
+% =====================================================================
+
+\chapter{Pendahuluan \& Akses Sistem}
+
+CMS Sekolah adalah sistem manajemen konten (\textit{Content Management System}) berbasis web
+yang dibangun di atas platform \textbf{Laravel 11} dan \textbf{Livewire}. Sistem ini dirancang
+khusus untuk memenuhi kebutuhan institusi pendidikan dalam mengelola informasi publik sekolah
+secara mandiri, aman, dan efisien---tanpa membutuhkan keahlian pemrograman.
+
+Sistem ini mencakup modul-modul seperti Berita, Pengumuman, Agenda, Galeri, Data Kepegawaian,
+Manajemen Media, hingga Konfigurasi Website. Seluruh perubahan yang dilakukan melalui panel
+admin akan langsung terrefleksi pada halaman publik website sekolah secara \textit{real-time}.
+
+% -------------------------------------------------------------------
+\section{Matriks Peran (Role) Pengguna}
+% -------------------------------------------------------------------
+
+Akses ke panel admin dibatasi oleh tiga tingkatan peran yang berbeda:
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\toprule
+\textbf{Peran (Role)} & \textbf{Hak Akses} \\
+\midrule
+\textbf{Super Admin} &
+  Akses penuh ke \textbf{seluruh} modul termasuk: Manajemen Pengguna,
+  Pengaturan Global, URL Login Kustom, Pods (tipe konten dinamis),
+  SEO, dan konfigurasi tampilan. \\
+\midrule
+\textbf{Admin} &
+  Dapat mengelola semua konten (Berita, Pengumuman, Agenda, Galeri,
+  Slider, Media, Unduhan, Staf, Fasilitas, Prestasi, Ekstrakurikuler).
+  Tidak bisa mengubah Pengaturan inti dan tidak bisa mengelola akun pengguna lain. \\
+\midrule
+\textbf{Editor} &
+  Hanya dapat membuat, mengedit, dan menerbitkan Berita (\textit{Post}).
+  Tidak memiliki akses ke modul lain. \\
+\bottomrule
+\end{tabularx}
+\caption{Matriks hak akses pengguna CMS Sekolah}
+\label{table:roles}
+\end{table}
+
+% -------------------------------------------------------------------
+\section{Skenario \& Alur Kerja: Login Pertama Kali}
+% -------------------------------------------------------------------
+
+Misalkan Ibu Dewi baru saja ditunjuk sebagai Admin website oleh Kepala Sekolah.
+\textbf{Super Admin} (Bapak IT Sekolah) telah membuatkan akun untuknya dengan
+\textit{role Admin}.
+
+\begin{enumerate}
+  \item Bapak IT memberi tahu Ibu Dewi alamat URL login khusus sekolah, misalnya:
+        \texttt{http://situs-sekolah.sch.id/\textbf{portal-admin}}.
+  \item Ibu Dewi membuka URL tersebut di peramban dan muncul halaman login.
+  \item Ia memasukkan \textbf{Email} dan \textbf{Password} sementara yang diberikan.
+  \item Sistem memverifikasi kredensial. Jika salah 5 kali berturut-turut,
+        sistem secara otomatis memblokir percobaan login selama 1 menit
+        (\textit{rate limiting: 5 percobaan per menit}).
+  \item Jika berhasil, Ibu Dewi diarahkan ke halaman \textbf{Dashboard} (\texttt{/admin/dashboard}).
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-dashboard-2026-06-16-17_51_15.png}
+  \caption{Halaman Dashboard Admin --- Ringkasan Statistik Konten}
+  \label{fig:dashboard}
+\end{figure}
+
+% -------------------------------------------------------------------
+\section{Panduan Penggunaan: Login \& Dashboard}
+% -------------------------------------------------------------------
+
+\subsection{Proses Login}
+
+\begin{enumerate}
+  \item Buka peramban web dan navigasikan ke URL Login yang diberikan oleh Super Admin
+        (defaultnya: \texttt{/login}, namun bisa dikustomisasi).
+  \item Isi kolom \textbf{Email} dengan alamat surel akun Anda.
+  \item Isi kolom \textbf{Password} dengan kata sandi.
+  \item Tekan tombol \textbf{Masuk}.
+\end{enumerate}
+
+\begin{notebox}[Informasi Keamanan]
+  Jika URL Login sudah diubah oleh Super Admin (misalnya menjadi \texttt{/portal-guru}),
+  akses melalui \texttt{/login} standar akan menghasilkan halaman \textit{404 Not Found}.
+  Pastikan Anda menyimpan tautan login yang benar di bookmark peramban Anda.
+\end{notebox}
+
+\subsection{Memahami Dashboard}
+
+Setelah login, Anda akan melihat halaman \textbf{Ringkasan Admin} yang terdiri dari:
+
+\begin{itemize}
+  \item \textbf{Kartu Statistik (8 buah)}: Menampilkan total data aktif dari modul:
+        \begin{itemize}
+          \item \textbf{Berita} --- total artikel yang tersimpan (semua status)
+          \item \textbf{Pengumuman} --- total pengumuman
+          \item \textbf{Agenda} --- total agenda/kegiatan
+          \item \textbf{Galeri} --- total album galeri
+          \item \textbf{Program Unggulan} --- total ekstrakurikuler
+          \item \textbf{Prestasi} --- total prestasi siswa
+          \item \textbf{Staff/Guru} --- total data kepegawaian
+          \item \textbf{Media (Gambar)} --- total file gambar di pustaka media
+        \end{itemize}
+  \item \textbf{Panel Berita Terbaru}: Daftar 5 berita terakhir. Setiap entri menampilkan
+        judul, status (\textit{Draft / Published}), dan waktu pembaruan terakhir.
+        Terdapat tautan \textbf{Edit} untuk langsung membuka form pengeditan.
+  \item \textbf{Panel Pengumuman Terbaru}: Mirip dengan Berita Terbaru, menampilkan
+        pengumuman terakhir beserta statusnya.
+  \item \textbf{Panel Agenda Mendatang}: Menampilkan agenda yang akan datang,
+        diurutkan berdasarkan tanggal \textit{start\_at}.
+  \item \textbf{Panel Pengguna Baru}: Menampilkan akun pengguna yang baru ditambahkan
+        beserta alamat email mereka (hanya terlihat oleh Super Admin/Admin).
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Logout / Keluar dari Sistem}
+% -------------------------------------------------------------------
+
+Untuk keluar dari sesi admin:
+\begin{enumerate}
+  \item Klik nama pengguna atau ikon profil di sudut kanan atas \textit{sidebar}.
+  \item Klik tombol \textbf{Keluar} / \textbf{Logout}.
+  \item Sistem akan mengakhiri sesi dan mengarahkan Anda kembali ke halaman Login.
+\end{enumerate}
+
+\begin{warnbox}[Keamanan Sesi]
+  Jangan pernah meninggalkan sesi admin terbuka di komputer umum atau bersama.
+  Selalu \textbf{Logout} setelah selesai bekerja.
+\end{warnbox}
+
+% -------------------------------------------------------------------
+\section{Penanganan Masalah Umum (Akses \& Login)}
+% -------------------------------------------------------------------
+
+\begin{itemize}
+  \item \textbf{Halaman Login Menampilkan 404}: Super Admin telah mengubah URL Login
+        dari \texttt{/login} menjadi alamat rahasia lain. Hubungi Super Admin untuk
+        mendapatkan tautan yang benar.
+  \item \textbf{Akun Diblokir / Tidak Bisa Login}: Sistem menerapkan pembatasan
+        5 percobaan login per menit. Tunggu 1 menit lalu coba kembali. Jika lupa
+        password, hubungi Super Admin untuk melakukan reset.
+  \item \textbf{Halaman Dashboard Kosong / Angka Statistik Nol}: Ini normal untuk
+        sistem yang baru dipasang. Mulailah mengisi konten melalui modul-modul
+        yang tersedia.
+\end{itemize}

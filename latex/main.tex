@@ -1,0 +1,155 @@
+% =====================================================================
+%  ENTERPRISE USER MANUAL: CMS SEKOLAH
+%  Dibuat oleh: Technical Writer AI
+%  Versi: 1.0 | Tanggal: \today
+% =====================================================================
+
+\documentclass[11pt,a4paper,bahasa]{report}
+
+% --- ENCODING & BAHASA ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bahasa]{babel}
+
+% --- FONT ---
+\usepackage{lmodern}
+
+% --- LAYOUT & GEOMETRI ---
+\usepackage[
+  a4paper,
+  top=2.5cm, bottom=2.5cm,
+  left=3cm,  right=2.5cm,
+  headheight=14pt
+]{geometry}
+
+% --- GAMBAR ---
+\usepackage{graphicx}
+\usepackage{float}
+
+% --- WARNA ---
+\usepackage[dvipsnames,table]{xcolor}
+\definecolor{primaryblue}{RGB}{14,165,233}
+\definecolor{slategray}{RGB}{71,85,105}
+\definecolor{lightbg}{RGB}{248,250,252}
+\definecolor{warnyellow}{RGB}{250,176,5}
+
+% --- TABEL ---
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+
+% --- HYPERLINK ---
+\usepackage[
+  colorlinks=true,
+  linkcolor=slategray,
+  urlcolor=primaryblue,
+  citecolor=slategray,
+  bookmarks=true,
+  bookmarksnumbered=true
+]{hyperref}
+
+% --- HEADER / FOOTER ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{slategray}{\nouppercase{\leftmark}}}
+\fancyhead[R]{\small\textcolor{slategray}{CMS Sekolah -- Manual Pengguna}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- JUDUL BAB ---
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{slategray}}
+  {\chaptertitlename\ \thechapter}{12pt}{\Huge}
+
+% --- DAFTAR (LIST) ---
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=*, itemsep=2pt}
+\setlist[itemize]{leftmargin=*, itemsep=2pt}
+
+% --- KOTAK PERINGATAN / CATATAN ---
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\newtcolorbox{notebox}[1][Catatan]{
+  colback=lightbg, colframe=primaryblue,
+  fonttitle=\bfseries, title=#1,
+  breakable, enhanced
+}
+\newtcolorbox{warnbox}[1][Perhatian]{
+  colback=yellow!10, colframe=warnyellow,
+  fonttitle=\bfseries, title=#1,
+  breakable, enhanced
+}
+
+% --- KODE ---
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{lightbg},
+  frame=single,
+  breaklines=true
+}
+
+% --- URL PANJANG ---
+\usepackage{url}
+\urlstyle{same}
+\usepackage{microtype}
+
+% --- SPACING ---
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+% --- METADATA DOKUMEN ---
+\hypersetup{
+  pdftitle={Manual Pengguna CMS Sekolah},
+  pdfauthor={Tim Teknologi Sekolah},
+  pdfsubject={Panduan Administrasi dan Penggunaan CMS Sekolah},
+  pdfkeywords={CMS, Sekolah, Manual, Laravel, Admin}
+}
+
+% =====================================================================
+\begin{document}
+\sloppy
+
+% --- HALAMAN JUDUL ---
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+
+  {\Huge\bfseries\color{slategray} Manual Pengguna Sistem\\[0.4em]
+  \textcolor{primaryblue}{CMS Sekolah}}
+
+  \vspace{1cm}
+  {\large Panduan Lengkap Administrasi Backend}
+
+  \vspace{0.5cm}
+  \rule{0.6\textwidth}{0.4pt}
+
+  \vspace{1.5cm}
+  \begin{tabular}{rl}
+    \textbf{Versi}    & 1.0 \\
+    \textbf{Tanggal}  & \today \\
+    \textbf{Platform} & Laravel 11 + Livewire \\
+    \textbf{Akses}    & \texttt{/admin/dashboard} \\
+  \end{tabular}
+
+  \vfill
+  {\small Dokumen ini bersifat \textit{internal} dan ditujukan bagi Administrator,
+  Editor, dan pengelola website sekolah.}
+\end{titlepage}
+
+% --- DAFTAR ISI ---
+\tableofcontents
+\clearpage
+
+% --- BAB-BAB ---
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+
+\end{document}

@@ -1,0 +1,224 @@
+% =====================================================================
+%  BAB 4: MANAJEMEN MEDIA, GALERI, SLIDER & NAVIGASI
+%  (Media Library, Downloads, Galleries, Sliders, Menus, Pages)
+% =====================================================================
+
+\chapter{Manajemen Media, Galeri, Slider \& Navigasi}
+
+Modul ini mengatur aset visual website (gambar), dokumen publik yang bisa diunduh,
+album foto, \textit{carousel} halaman depan, dan struktur navigasi website.
+
+% -------------------------------------------------------------------
+\section{Modul Pustaka Media (\textit{Media Library})}
+% -------------------------------------------------------------------
+
+Pustaka Media adalah repositori terpusat untuk semua berkas gambar yang diunggah
+ke dalam sistem. Gambar yang diunggah secara otomatis dikonversi ke format
+\textit{.webp} untuk mempercepat pemuatan halaman website.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-media-2026-06-16-17_52_59.png}
+  \caption{Tampilan Pustaka Media --- Grid Gambar}
+  \label{fig:media-index}
+\end{figure}
+
+\subsection{Cara Mengunggah Gambar}
+
+\begin{enumerate}
+  \item Klik menu \textbf{Media} di \textit{sidebar}.
+  \item Klik tombol \textbf{Unggah Gambar} (atau seret file ke zona \textit{drop}).
+  \item Pilih file dari komputer Anda. Format yang didukung: JPG, JPEG, PNG, GIF, WEBP.
+  \item Gambar akan terproses dan muncul di kisi (\textit{grid}) galeri media.
+\end{enumerate}
+
+\subsection{Cara Menghapus Gambar}
+
+\begin{enumerate}
+  \item Arahkan kursor ke gambar yang ingin dihapus.
+  \item Klik ikon \textbf{Hapus} (tempat sampah) yang muncul.
+  \item Konfirmasi penghapusan.
+\end{enumerate}
+
+\begin{warnbox}[Proteksi Integritas Data]
+  Sistem akan \textbf{menolak penghapusan} gambar yang masih tertaut ke konten aktif
+  (misalnya gambar yang digunakan sebagai \textit{thumbnail} berita atau lampiran
+  di modul Unduhan). Ini adalah fitur proteksi untuk mencegah \textit{broken links}
+  di halaman publik. Hapus atau ganti keterkaitannya terlebih dahulu sebelum
+  menghapus gambar dari pustaka media.
+\end{warnbox}
+
+% -------------------------------------------------------------------
+\section{Modul Unduhan (\textit{Downloads})}
+% -------------------------------------------------------------------
+
+Modul Unduhan memungkinkan Admin menyediakan berkas dokumen (PDF, Word, Excel, dll.)
+yang dapat diunduh oleh pengunjung publik melalui halaman \texttt{/unduhan}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-downloads-2026-06-16-17_55_05.png}
+  \caption{Daftar Berkas Unduhan di Panel Admin}
+  \label{fig:downloads-index}
+\end{figure}
+
+\subsection{Skenario: Menyediakan Brosur PPDB}
+
+Panitia PPDB meminta Admin untuk menyediakan brosur pendaftaran dalam format PDF
+agar calon siswa bisa mengunduhnya dari website.
+
+\subsection{Panduan: Menambahkan Berkas Unduhan}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Unduhan} dan klik tombol tambah.
+  \item Isi \textbf{Judul Dokumen} (contoh: ``Brosur PPDB Tahun Ajaran 2026/2027'').
+  \item Isi \textbf{Deskripsi Singkat} (1-2 kalimat) tentang isi dokumen.
+  \item Klik \textbf{Pilih File} pada kolom \textbf{File Dokumen (PDF, Word, Excel, dll.)}
+        untuk mengunggah berkas dari komputer. Format yang diizinkan:
+        \texttt{pdf, doc, docx, xls, xlsx, ppt, pptx, zip, rar}.
+        Ukuran maksimal: \textbf{20 MB}.
+  \item Centang opsi \textbf{Tersedia untuk Publik} agar berkas dapat diakses oleh
+        pengunjung tanpa harus login.
+        Jika tidak dicentang, berkas hanya tersimpan di sistem dan tidak tampil di halaman publik.
+  \item Klik tombol hitam \textbf{Simpan}.
+\end{enumerate}
+
+\begin{notebox}[Mengganti File Lama]
+  Saat mengedit unduhan yang sudah ada, Anda akan melihat informasi file aktif
+  (nama file dan ukurannya dalam KB) beserta tautan \textbf{Lihat File} untuk verifikasi.
+  Untuk mengganti file, cukup pilih file baru melalui tombol \textit{file picker}.
+  Sistem akan menggantikan file lama secara otomatis.
+\end{notebox}
+
+\subsection{Penanganan Masalah: Unduhan}
+
+\begin{itemize}
+  \item \textbf{File gagal diunggah}: Periksa apakah ekstensi file termasuk dalam
+        daftar yang diizinkan. File berekstensi \texttt{.php}, \texttt{.exe}, atau
+        skrip berbahaya akan \textbf{ditolak secara otomatis} oleh sistem.
+  \item \textbf{Unduhan tidak muncul di halaman publik}: Pastikan opsi
+        \textbf{Tersedia untuk Publik} sudah dicentang.
+\end{itemize}
+
+% -------------------------------------------------------------------
+\section{Modul Galeri (\textit{Galleries})}
+% -------------------------------------------------------------------
+
+Modul Galeri mengatur album foto kegiatan sekolah yang tampil di halaman \texttt{/galeri}.
+Setiap album memiliki gambar \textit{cover} dan koleksi foto di dalamnya.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2026-06-16-17_52_34.png}
+  \caption{Daftar Album Galeri di Panel Admin}
+  \label{fig:galleries-index}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-galleries-2-edit-2026-06-16-17_52_48.png}
+  \caption{Form Edit Album Galeri dan Manajemen Foto}
+  \label{fig:galleries-edit}
+\end{figure}
+
+\subsection{Panduan: Membuat Album Galeri}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Galeri} dan klik tambah.
+  \item Isi \textbf{Judul} album (contoh: ``Hari Olahraga Nasional 2025'').
+  \item Tentukan \textbf{Tanggal Publish} untuk album ini.
+  \item Tulis \textbf{Deskripsi} singkat tentang album.
+  \item Atur \textbf{Status}: \textit{Draft} atau \textit{Published}.
+  \item Atur \textbf{Urutan} tampil di halaman galeri publik (angka kecil = tampil lebih awal).
+  \item Pilih gambar \textbf{Cover Galeri} menggunakan komponen \textit{image-upload}.
+  \item Klik tombol \textbf{Simpan}.
+  \item Setelah album tersimpan, Anda bisa kembali ke halaman \textbf{Edit} album
+        untuk menambahkan foto-foto individual ke dalam album tersebut
+        melalui panel \textbf{Kelola Foto Album}.
+\end{enumerate}
+
+% -------------------------------------------------------------------
+\section{Modul Slider (\textit{Sliders})}
+% -------------------------------------------------------------------
+
+Slider mengatur gambar-gambar yang berputar otomatis (\textit{carousel}) di bagian
+\textit{Hero} halaman depan website. Setiap slide adalah sebuah foto \textit{landscape}
+beresolusi tinggi.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-sliders-2026-06-16-17_53_13.png}
+  \caption{Daftar Slide di Panel Admin}
+  \label{fig:sliders-index}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Slide Baru}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Sliders} dan klik tambah.
+  \item Tentukan \textbf{Urutan} slide (angka 1 = tampil pertama).
+  \item Centang \textbf{Aktif} agar slide ini tampil di halaman depan.
+        Slide yang tidak dicentang (\textit{inactive}) tidak akan ditampilkan
+        meskipun tersimpan di sistem.
+  \item Unggah \textbf{Gambar Slider} --- gunakan foto beresolusi tinggi
+        dengan rasio \textbf{16:9} (minimal 1920×1080 px) agar tidak terpotong
+        saat ditampilkan di berbagai ukuran layar.
+  \item Klik tombol \textbf{Simpan}.
+\end{enumerate}
+
+\begin{notebox}[Zona Aman Gambar Slider]
+  Letakkan elemen penting (teks, logo) pada bagian tengah gambar (\textit{safe zone})
+  karena sistem akan memotong sisi gambar saat ditampilkan di layar ponsel.
+\end{notebox}
+
+% -------------------------------------------------------------------
+\section{Modul Menu Navigasi (\textit{Menus})}
+% -------------------------------------------------------------------
+
+Menu Navigasi mengatur struktur tautan yang muncul di \textit{navbar} (header)
+dan \textit{footer} website. Mendukung hierarki \textit{dropdown} (sub-menu) dan
+pengaturan target tab.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Img/Backend/screencapture-127-0-0-1-8000-admin-menus-1-edit-2026-06-16-17_53_28.png}
+  \caption{Halaman Kelola Menu Navigasi dan Item-nya}
+  \label{fig:menus-edit}
+\end{figure}
+
+\subsection{Panduan: Menambahkan Item Menu}
+
+\begin{enumerate}
+  \item Buka menu \textbf{Menus} lalu pilih menu yang ingin dikelola (misal: ``Menu Utama'').
+  \item Pada panel \textbf{Tambah Item Menu}, isi:
+        \begin{itemize}
+          \item \textbf{Label} --- teks yang muncul di navigasi (contoh: ``Tentang Kami'')
+          \item \textbf{URL} --- alamat tujuan (contoh: \texttt{/profil} untuk halaman internal,
+                atau URL lengkap untuk tautan eksternal)
+          \item \textbf{Target}:
+                \begin{itemize}
+                  \item \textit{Tab Sama} (\texttt{\_self}) --- buka di tab yang sama
+                  \item \textit{Tab Baru} (\texttt{\_blank}) --- buka di tab baru
+                        (disarankan untuk tautan eksternal)
+                \end{itemize}
+          \item \textbf{Parent} --- pilih item induk jika ini adalah sub-menu
+                (misal: ``Profil'' sebagai \textit{parent} dari ``Visi Misi'')
+          \item \textbf{Urutan} --- angka urut dalam grup yang sama
+        \end{itemize}
+  \item Klik tombol \textbf{Tambah Item}.
+  \item Item yang baru ditambahkan akan muncul di daftar di bawahnya.
+        Anda bisa mengubah urutan dengan fitur \textit{drag-and-drop} menggunakan
+        ikon pegangan (\textit{drag handle}) di sisi kiri setiap baris.
+\end{enumerate}
+
+\subsection{Penanganan Masalah: Menu}
+
+\begin{itemize}
+  \item \textbf{Perubahan menu tidak terlihat di website}: Sistem mungkin menggunakan
+        \textit{cache} untuk menu. Coba bersihkan \textit{cache} aplikasi melalui
+        terminal dengan perintah \lstinline{php artisan cache:clear}, atau lakukan
+        \textit{hard refresh} di peramban.
+  \item \textbf{\textit{Dropdown} tidak muncul}: Pastikan item sub-menu sudah memiliki
+        \textbf{Parent} yang benar. Tanpa \textit{parent}, item akan muncul sebagai
+        menu utama, bukan sebagai \textit{dropdown}.
+\end{itemize}
